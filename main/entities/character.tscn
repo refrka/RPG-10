@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cq5pptk1bnbyq"]
+
+[ext_resource type="Script" uid="uid://cpxht081yjf5c" path="res://main/entity.gd" id="1_u7xqv"]
+[ext_resource type="Script" uid="uid://c7iq72efn01vy" path="res://main/component.gd" id="2_yoe28"]
+[ext_resource type="Script" uid="uid://d2hh6vbkhqjct" path="res://main/components/velocity_component.gd" id="3_0k2p7"]
+[ext_resource type="Script" uid="uid://dbahdo6et5nv5" path="res://main/components/height_component.gd" id="4_0k2p7"]
+
+[sub_resource type="Resource" id="Resource_ctsxe"]
+script = ExtResource("3_0k2p7")
+
+[sub_resource type="Resource" id="Resource_ruoji"]
+script = ExtResource("4_0k2p7")
+
+[node name="Character" type="CharacterBody2D" unique_id=912362614]
+script = ExtResource("1_u7xqv")
+authored_id = 1056330569
+components = Array[ExtResource("2_yoe28")]([SubResource("Resource_ctsxe"), SubResource("Resource_ruoji")])
+
+[node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=1328132919]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasGroup" unique_id=1140959160]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1207170838]

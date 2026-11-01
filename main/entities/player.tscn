@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bbe2wwwdic6k0"]
+
+[ext_resource type="PackedScene" uid="uid://cq5pptk1bnbyq" path="res://main/entities/character.tscn" id="1_ctsxe"]
+[ext_resource type="Script" uid="uid://c7iq72efn01vy" path="res://main/component.gd" id="2_v2iwy"]
+[ext_resource type="Script" uid="uid://d2hh6vbkhqjct" path="res://main/components/velocity_component.gd" id="3_k1fg7"]
+[ext_resource type="Script" uid="uid://dbahdo6et5nv5" path="res://main/components/height_component.gd" id="4_k1fg7"]
+[ext_resource type="Script" uid="uid://cl4umgxaoomp7" path="res://main/components/player_input_component.gd" id="5_olhwn"]
+[ext_resource type="Script" uid="uid://bh870ej6vatgq" path="res://main/components/body_component.gd" id="6_cpvfl"]
+
+[sub_resource type="Resource" id="Resource_olhwn"]
+script = ExtResource("3_k1fg7")
+
+[sub_resource type="Resource" id="Resource_cpvfl"]
+script = ExtResource("4_k1fg7")
+
+[sub_resource type="Resource" id="Resource_qvsdu"]
+script = ExtResource("5_olhwn")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvsdu"]
+size = Vector2(16, 16)
+
+[sub_resource type="Resource" id="Resource_nlgl6"]
+script = ExtResource("6_cpvfl")
+body_collision_shape = SubResource("RectangleShape2D_qvsdu")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vyht1"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cpvfl"]
+size = Vector2(16, 16)
+
+[node name="Player" unique_id=912362614 instance=ExtResource("1_ctsxe")]
+authored_id = 12901706
+components = Array[ExtResource("2_v2iwy")]([SubResource("Resource_olhwn"), SubResource("Resource_cpvfl"), SubResource("Resource_qvsdu"), SubResource("Resource_nlgl6")])
+
+[node name="Sprite2D" parent="CanvasGroup" parent_id_path=PackedInt32Array(1328132919) index="0" unique_id=1140959160]
+texture = SubResource("PlaceholderTexture2D_vyht1")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1207170838]
+shape = SubResource("RectangleShape2D_cpvfl")

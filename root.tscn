@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://piy0jjygbnlw"]
+
+[ext_resource type="Script" uid="uid://bvhiduluo2edu" path="res://root.gd" id="1_pq8q7"]
+[ext_resource type="Script" uid="uid://p5yj8ljcwjc4" path="res://main/world.gd" id="2_vvh5c"]
+[ext_resource type="Script" uid="uid://dniu6c4vueqdm" path="res://main/location.gd" id="3_28aoi"]
+[ext_resource type="Script" uid="uid://cx3tro63hpf3a" path="res://main/systems/movement_system.gd" id="3_jnlp7"]
+[ext_resource type="PackedScene" uid="uid://hph5tmhkdq28" path="res://main/ui/main_menu.tscn" id="4_28aoi"]
+[ext_resource type="Script" uid="uid://bfdo3on3duc1v" path="res://main/systems/player_input_system.gd" id="4_huihk"]
+[ext_resource type="PackedScene" uid="uid://bbe2wwwdic6k0" path="res://main/entities/player.tscn" id="5_l8v81"]
+
+[node name="Root" type="Node" unique_id=161668494]
+script = ExtResource("1_pq8q7")
+
+[node name="BGCanvas" type="CanvasLayer" parent="." unique_id=1398782075]
+
+[node name="BGRoot" type="Control" parent="BGCanvas" unique_id=1724842729]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="BGCanvas/BGRoot" unique_id=740778316]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.05, 0.05, 1)
+
+[node name="WorldCanvas" type="CanvasLayer" parent="." unique_id=820615611]
+follow_viewport_enabled = true
+
+[node name="World" type="Node2D" parent="WorldCanvas" unique_id=1241773174 node_paths=PackedStringArray("systems_root", "entities_root")]
+script = ExtResource("2_vvh5c")
+systems_root = NodePath("SystemsRoot")
+entities_root = NodePath("Location/EntitiesRoot")
+metadata/_custom_type_script = "uid://p5yj8ljcwjc4"
+
+[node name="SystemsRoot" type="Node" parent="WorldCanvas/World" unique_id=669375712]
+
+[node name="MovementSystem" type="Node" parent="WorldCanvas/World/SystemsRoot" unique_id=519536360]
+script = ExtResource("3_jnlp7")
+metadata/_custom_type_script = "uid://cx3tro63hpf3a"
+
+[node name="PlayerInputSystem" type="Node" parent="WorldCanvas/World/SystemsRoot" unique_id=58464439]
+script = ExtResource("4_huihk")
+metadata/_custom_type_script = "uid://bfdo3on3duc1v"
+
+[node name="Location" type="Node2D" parent="WorldCanvas/World" unique_id=355684749]
+script = ExtResource("3_28aoi")
+
+[node name="EntitiesRoot" type="Node2D" parent="WorldCanvas/World/Location" unique_id=1305454092]
+
+[node name="Player" parent="WorldCanvas/World/Location/EntitiesRoot" unique_id=912362614 instance=ExtResource("5_l8v81")]
+authored_id = 3547323637
+
+[node name="MainMenuCanvas" type="CanvasLayer" parent="." unique_id=1503513337]
+
+[node name="MainMenuRoot" type="Control" parent="MainMenuCanvas" unique_id=241605350]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MainMenu" parent="MainMenuCanvas/MainMenuRoot" unique_id=339510030 instance=ExtResource("4_28aoi")]
+layout_mode = 1
